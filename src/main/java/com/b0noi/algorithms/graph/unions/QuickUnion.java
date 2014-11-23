@@ -23,8 +23,12 @@ public class QuickUnion<T> extends AbstractUnionFind<T> {
 
     @Override
     public synchronized int find(final T p) {
-        final int index = elementsIndex.get(p);
-        return findRecursive(index);
+        final Integer index = elementsIndex.get(p);
+        final Integer root = findRecursive(index);
+
+        if (!index.equals(root)) connections.set(index, root);
+
+        return root;
     }
 
     @Override
