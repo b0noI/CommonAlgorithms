@@ -20,6 +20,7 @@ public class ISortTest {
     private static Object[][] isortImplementationProvider() {
         return new Object[][]{
                 {new BubbleSort(), 10_000},
+                {new InsertionSort(), 10_000},
         } ;
     }
 
