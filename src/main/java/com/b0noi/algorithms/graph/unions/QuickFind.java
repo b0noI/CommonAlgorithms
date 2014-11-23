@@ -4,11 +4,7 @@ package com.b0noi.algorithms.graph.unions;
 import java.util.*;
 import java.util.stream.IntStream;
 
-public class QuickFind<T> implements IUnionFind<T> {
-
-    private Map<T, Integer> elementsIndex = new HashMap<>();
-
-    private List<Integer> connections = new ArrayList<>();
+public class QuickFind<T> extends AbstractUnionFind<T> {
 
     @Override
     public synchronized void union(T p, T q) {
@@ -37,12 +33,6 @@ public class QuickFind<T> implements IUnionFind<T> {
     @Override
     public synchronized int count() {
         return (int)connections.stream().distinct().count();
-    }
-
-    @Override
-    public synchronized void add(final T p) {
-        elementsIndex.put(p, connections.size());
-        connections.add(connections.size());
     }
 
 }

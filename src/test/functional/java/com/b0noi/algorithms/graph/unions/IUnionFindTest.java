@@ -1,13 +1,25 @@
 package com.b0noi.algorithms.graph.unions;
 
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+
+import java.util.OptionalInt;
 
 import static org.testng.Assert.*;
 
-public class QuickFindTest {
+public class IUnionFindTest {
 
-    @Test
-    public void testQuickFind() throws Exception {
+    @DataProvider(name = "union_find_implementation_provider")
+    private static Object[][] unionFindImplementationProvider() {
+        return new Object[][]{
+                {new QuickFind<Integer>()},
+                {new QuickUnion<Integer>()},
+                {new WeightedQuickUnion<Integer>()},
+        } ;
+    }
+
+    @Test(dataProvider = "union_find_implementation_provider")
+    public void testQuickFind(final IUnionFind<Integer> testInstance) throws Exception {
         // input arguments
         final Integer element1 = 1;
         final Integer element2 = 2;
@@ -20,7 +32,6 @@ public class QuickFindTest {
         // expected results
 
         // creating test instance
-        final IUnionFind<Integer> testInstance = new QuickFind<>();
 
         // execution test
         testInstance.add(element1);
