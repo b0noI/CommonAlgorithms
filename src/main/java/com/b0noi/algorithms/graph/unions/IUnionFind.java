@@ -1,6 +1,8 @@
 package com.b0noi.algorithms.graph.unions;
 
 
+import java.util.Set;
+
 public interface IUnionFind<T> {
 
     public void union(final T p, final T q);
@@ -12,5 +14,7 @@ public interface IUnionFind<T> {
     public int count();
 
     public void add(final T p);
+
+    public Set<T> elements();
 
 }
