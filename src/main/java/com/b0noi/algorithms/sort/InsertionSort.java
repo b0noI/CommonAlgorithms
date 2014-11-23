@@ -7,26 +7,21 @@ public class InsertionSort extends AbstractSort {
     @Override
     public <T extends Comparable<T>> void sort(final List<T> elements) {
         for (int i = 0; i < elements.size(); i++) {
-            final int minIndex = InsertionSort.minimumIndex(i, elements.get(i), elements);
+            final int minIndex = InsertionSort.minimumIndex(i, elements);
             if (minIndex != i) {
                 AbstractSort.swap(elements, i, minIndex);
             }
         }
     }
 
-    private static <T extends Comparable<T>>int minimumIndex(final int index, final T currentMinElement, final List<T> elements) {
-        try {
-
-            if (index == elements.size()) return index;
-
-            final T newMinElement =
-                    AbstractSort.lower(elements.get(index), currentMinElement) ?
-                            elements.get(index) :
-                            currentMinElement;
-            return minimumIndex(index + 1, newMinElement, elements);
-        } catch (StackOverflowError e) {
-            throw e;
+    private static <T extends Comparable<T>>int minimumIndex(final int from, final List<T> elements) {
+        int minElementIndex = from;
+        for (int i = from + 1; i < elements.size(); i++) {
+            if (AbstractSort.lower(elements.get(i), elements.get(minElementIndex))) {
+                minElementIndex = i;
+            }
         }
+        return minElementIndex;
     }
 
 }
