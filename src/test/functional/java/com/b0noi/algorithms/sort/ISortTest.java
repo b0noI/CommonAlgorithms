@@ -5,6 +5,7 @@ import org.testng.annotations.Test;
 
 import java.util.*;
 
+
 import static org.testng.Assert.*;
 
 public class ISortTest {
@@ -15,7 +16,8 @@ public class ISortTest {
                 {new SelectionSort(), 10_000},
                 {new InsertionSort(), 10_000},
                 {new ShellSort(),     30_000},
-                {new MergeSort(),     30_000},
+                {new MergeSort(),     800_000},
+                {new QuickSort(),     800_000},
         } ;
     }
 
