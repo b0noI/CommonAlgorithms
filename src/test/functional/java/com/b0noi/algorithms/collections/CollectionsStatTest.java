@@ -4,7 +4,6 @@ import org.testng.annotations.Test;
 
 import java.util.*;
 
-import static org.testng.Assert.*;
 
 public class CollectionsStatTest {
 
